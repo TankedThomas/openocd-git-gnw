@@ -1,4 +1,4 @@
-From cf67cdf51d779d70171d5fa0288bfce91338570d Mon Sep 17 00:00:00 2001
+From 6be752c8631cfaf759ac4b1b7ef798aa8d8af599 Mon Sep 17 00:00:00 2001
 From: Konrad Beckmann <konrad.beckmann@gmail.com>
 Date: Fri, 6 Aug 2021 11:04:51 +0200
 Subject: [PATCH] Extend bank1 and enable bank2 of STM32H7B0VBTx
@@ -8,10 +8,10 @@ Subject: [PATCH] Extend bank1 and enable bank2 of STM32H7B0VBTx
  1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/src/flash/nor/stm32h7x.c b/src/flash/nor/stm32h7x.c
-index 5c71d31f0..f731a0ab1 100644
+index c02fae992..a6a3d6610 100644
 --- a/src/flash/nor/stm32h7x.c
 +++ b/src/flash/nor/stm32h7x.c
-@@ -830,6 +830,12 @@ static int stm32x_probe(struct flash_bank *bank)
+@@ -834,6 +834,12 @@ static int stm32x_probe(struct flash_bank *bank)
  		return ERROR_FAIL;
  	}
  
@@ -24,7 +24,7 @@ index 5c71d31f0..f731a0ab1 100644
  	if (has_dual_bank) {
  		LOG_INFO("STM32H7 flash has dual banks");
  		if (bank->base != bank1_base && bank->base != bank2_base) {
-@@ -841,8 +847,8 @@ static int stm32x_probe(struct flash_bank *bank)
+@@ -845,8 +851,8 @@ static int stm32x_probe(struct flash_bank *bank)
  	} else {
  		LOG_INFO("STM32H7 flash has a single bank");
  		if (bank->base == bank2_base) {
@@ -36,5 +36,5 @@ index 5c71d31f0..f731a0ab1 100644
  			LOG_ERROR("STM32H7 flash bank base address config is incorrect. "
  					TARGET_ADDR_FMT " but should be 0x%" PRIx32,
 -- 
-2.32.0
+2.39.5
 
