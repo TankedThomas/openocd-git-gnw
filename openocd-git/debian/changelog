@@ -1,5 +1,5 @@
-openocd-git (0.10.0-1514-ga8edbd020) unstable; urgency=medium
+openocd-git (0.12.0-873-g1f3f63569) unstable; urgency=medium
 
   * openocd-git
 
- -- Docker Build Bot <docker@localhost>  Tue, 01 Dec 2020 23:09:04 +0000
+ -- Docker Build Bot <docker@localhost>  Tue, 18 Feb 2025 10:41:09 +1300
