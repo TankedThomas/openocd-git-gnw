@@ -6,7 +6,9 @@ However, as this fork will not regularly be maintained, please fork and maintain
 
 -------------------
 
-## Build from source for Ubuntu >=20.04 / Debian >= 10 (x86_64)
+## Build from source for Ubuntu >=22.04 / Debian >= 12 (x86_64)
+
+The current version of openocd requires `libjim-dev >= 0.81`, which isn't available on older versions of Ubuntu nor Debian. If necessary, you can compile [jimtcl from source](https://github.com/msteveb/jimtcl), which provides `libjim-dev`.
 
 You can build and install from source by running the following commands:
 
