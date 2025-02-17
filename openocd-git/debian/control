@@ -1,12 +1,38 @@
 Source: openocd-git
-Section: main
-Priority: extra
+Section: embedded
+Priority: optional
 Maintainer: Docker Build Bot <docker@localhost>
-Build-Depends: debhelper, git, texinfo, pkg-config, libusb-dev, libusb-1.0-0-dev, libusb-dev, libhidapi-dev, libftdi-dev, libftdi1-dev
+Build-Depends: debhelper-compat (= 13),
+               libcapstone-dev,
+               libftdi1-dev,
+               libusb-1.0-0-dev,
+               libjaylink-dev (>= 0.1.0+git20200606.2800726-1~exp1),
+               texinfo, texlive,
+               libgpiod-dev,
+               libhidapi-dev,
+               libjim-dev (>= 0.81),
+               pkg-config
+Standards-Version: 4.6.2
+Homepage: https://openocd.org/
+Rules-Requires-Root: no
 
 Package: openocd-git
 Architecture: any
-Depends: libusb-0.1-4, libusb-1.0-0, libftdi1, libftdi1-2, libhidapi-hidraw0
-Description: OpenOCD GIT
- OpenOCD GIT
-
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Open on-chip JTAG/SWD debug solution for embedded target devices (git version)
+ OpenOCD patched with dual-bank support for STM32H7x NOR Flash chips.
+ .
+ OpenOCD aims to provide debugging, in-system programming and boundary-scan
+ testing for embedded target devices.
+ .
+ The debugger uses an IEEE 1149-1 compliant JTAG TAP bus master to access
+ on-chip debug functionality available on ARM based microcontrollers or
+ system-on-chip solutions. For MIPS systems the EJTAG interface is supported.
+ Additionally there is support for eSi-RISC, Intel, OpenRISC, RISC-V and ARC
+ controllers.
+ .
+ User interaction is realized through a telnet command line interface,
+ a gdb (the GNU debugger) remote protocol server, and a simplified RPC
+ connection that can be used to interface with OpenOCD's Jim Tcl engine.
+ .
+ OpenOCD supports many different types of JTAG interfaces/programmers.
