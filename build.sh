@@ -6,9 +6,10 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get install -y \
     build-essential debhelper devscripts equivs \
-    debhelper git texinfo pkg-config \
+    debhelper git texinfo texlive pkg-config \
     libusb-dev libusb-1.0-0-dev libusb-dev libhidapi-dev libftdi-dev libftdi1-dev \
-    libusb-0.1-4 libusb-1.0-0 libftdi1 libftdi1-2 libhidapi-hidraw0
+    libusb-0.1-4 libusb-1.0-0 libftdi1 libftdi1-2 libhidapi-hidraw0 \
+	libjim-dev libcapstone-dev libjaylink-dev libgpiod-dev
 
 cd openocd-git
 
@@ -26,5 +27,8 @@ export DEBEMAIL="docker@localhost"
 dch --create --distribution unstable --package "openocd-git" \
     --newversion $VERSION "openocd-git"
 
-dpkg-buildpackage --no-sign -j$(nproc)
+# Build package
+dpkg-buildpackage --no-sign -b -j$(nproc)
 
+# Delete any residual files
+rm -f ../openocd-git_*{.buildinfo,.changes} 2>/dev/null || true
